@@ -494,8 +494,10 @@ footer a:hover { color: var(--peach); }
   .nav-links.open {
     display: flex; flex-direction: column;
     position: fixed; inset: 0; background: var(--cream);
-    justify-content: center; align-items: center;
-    gap: 2rem; z-index: 99;
+    justify-content: flex-start; align-items: center;
+    padding-top: 120px; padding-bottom: 40px;
+    gap: 1.8rem; z-index: 99;
+    overflow-y: auto;
   }
   .nav-links.open a { font-size: 1.2rem; }
   .nav-toggle { display: flex; z-index: 100; }
