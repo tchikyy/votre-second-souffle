@@ -459,6 +459,9 @@ footer a:hover { color: var(--peach); }
   font-family: 'Playfair Display', serif; font-size: 1rem;
   color: rgba(255,255,255,0.7); font-weight: 700;
 }
+.footer-brand img {
+  background: #fff; border-radius: 50%; padding: 3px;
+}
 
 /* ══ ANIMATIONS ══ */
 @keyframes fadeUp {
@@ -493,13 +496,14 @@ footer a:hover { color: var(--peach); }
   .nav-links { display: none; }
   .nav-links.open {
     display: flex; flex-direction: column;
-    position: fixed; inset: 0; background: var(--cream);
+    position: fixed; inset: 0; background: var(--green);
     justify-content: flex-start; align-items: center;
-    padding-top: 120px; padding-bottom: 40px;
-    gap: 1.8rem; z-index: 99;
+    padding-top: 90px; padding-bottom: 30px;
+    gap: 1.5rem; z-index: 99;
     overflow-y: auto;
   }
-  .nav-links.open a { font-size: 1.2rem; }
+  .nav-links.open a { font-size: 1.2rem; color: #fff; }
+  .nav-toggle[aria-expanded="true"] span { background: #fff; }
   .nav-toggle { display: flex; z-index: 100; }
 }
 @media (max-width: 600px) {
