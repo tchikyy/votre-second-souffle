@@ -7,17 +7,36 @@ window.addEventListener('scroll', () => {
 // ══ MOBILE MENU ══
 const toggle = document.getElementById('navToggle');
 const links  = document.getElementById('navLinks');
-toggle.addEventListener('click', () => {
-  const open = links.classList.toggle('open');
-  toggle.setAttribute('aria-expanded', open);
-  document.body.style.overflow = open ? 'hidden' : '';
+
+function closeMenu() {
+  links.classList.remove('open');
+  document.body.classList.remove('menu-open');
+  toggle.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+function openMenu() {
+  links.classList.add('open');
+  document.body.classList.add('menu-open');
+  toggle.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+
+toggle.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const isOpen = links.classList.contains('open');
+  isOpen ? closeMenu() : openMenu();
 });
+
 links.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    links.classList.remove('open');
-    toggle.setAttribute('aria-expanded', false);
-    document.body.style.overflow = '';
-  });
+  a.addEventListener('click', closeMenu);
+});
+
+// Close menu when clicking on the backdrop
+document.addEventListener('click', (e) => {
+  if (links.classList.contains('open') && !nav.contains(e.target)) {
+    closeMenu();
+  }
 });
 
 // ══ CONTACT FORM ══

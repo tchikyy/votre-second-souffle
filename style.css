@@ -493,18 +493,55 @@ footer a:hover { color: var(--peach); }
   .tarifs-grid { grid-template-columns: 1fr 1fr; }
   .faq-wrap { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
-  .nav-links.open {
-    display: flex; flex-direction: column;
-    position: fixed; inset: 0; background: var(--green);
-    justify-content: flex-start; align-items: center;
-    padding-top: 90px; padding-bottom: 30px;
-    gap: 1.5rem; z-index: 99;
-    overflow-y: auto;
+  /* Mobile menu background overlay */
+  body::after {
+    content: ''; position: fixed; inset: 0;
+    background: rgba(26, 38, 26, 0.4); backdrop-filter: blur(6px);
+    z-index: 98; opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease;
   }
-  .nav-links.open a { font-size: 1.2rem; color: #fff; }
-  .nav-toggle[aria-expanded="true"] span { background: #fff; }
-  .nav-toggle { display: flex; z-index: 100; }
+  body.menu-open::after {
+    opacity: 1; pointer-events: auto;
+  }
+
+  /* Drawer menu */
+  .nav-links {
+    display: flex; flex-direction: column;
+    position: fixed; top: 0; right: -100%;
+    width: 85%; max-width: 350px; height: 100vh;
+    background: var(--cream);
+    padding: 100px 2rem 3rem;
+    gap: 0; z-index: 99;
+    box-shadow: -10px 0 40px rgba(0,0,0,0.1);
+    transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    overflow-y: auto; align-items: flex-start;
+  }
+  .nav-links.open { right: 0; }
+  
+  /* Big tappable links */
+  .nav-links li { width: 100%; list-style: none; }
+  .nav-links a { 
+    display: block; width: 100%;
+    font-size: 1.25rem; color: var(--text); font-weight: 600;
+    padding: 1.2rem 0; border-bottom: 1px solid rgba(58,122,58,0.1);
+  }
+  .nav-links a.nav-rdv {
+    margin-top: 1.5rem; text-align: center;
+    border-bottom: none; border-radius: 3rem;
+    padding: 1rem; font-size: 1.1rem;
+  }
+
+  /* Hamburger to X animation */
+  .nav-toggle { display: flex; z-index: 100; position: relative; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg); background: var(--text);
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg); background: var(--text);
+  }
 }
 @media (max-width: 600px) {
   section { padding: 4rem 5%; }
