@@ -335,24 +335,25 @@ section { padding: 6rem 5%; }
 .tarif {
   border: 1px solid rgba(255,255,255,0.12); border-radius: 1.3rem;
   padding: 1.8rem 1.5rem;
-  background: rgba(255,255,255,0.05);
-  transition: background 0.25s, border-color 0.25s, transform 0.25s;
+  background: #fff;
+  transition: transform 0.25s, box-shadow 0.25s;
   position: relative;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
 }
-.tarif:hover { background: rgba(255,255,255,0.1); border-color: rgba(242,184,154,0.4); transform: translateY(-4px); }
-.tarif.featured { background: rgba(232,121,58,0.2); border-color: rgba(232,121,58,0.5); }
+.tarif:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+.tarif.featured { background: var(--peach-pale); border-color: var(--peach); }
 .tarif-label {
   font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--peach); font-weight: 700; margin-bottom: 0.7rem;
+  color: var(--orange); font-weight: 700; margin-bottom: 0.7rem;
 }
 .tarif-name {
   font-family: 'Playfair Display', serif;
-  font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem;
+  font-size: 1.2rem; font-weight: 700; color: var(--green); margin-bottom: 0.3rem;
 }
-.tarif-duration { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-bottom: 1.3rem; }
+.tarif-duration { font-size: 0.78rem; color: var(--mid); margin-bottom: 1.3rem; }
 .tarif-price {
   font-family: 'Playfair Display', serif;
-  font-size: 2.4rem; font-weight: 700; color: var(--peach); line-height: 1;
+  font-size: 2.4rem; font-weight: 700; color: var(--orange); line-height: 1;
 }
 .tarif-price sup { font-size: 1rem; vertical-align: super; }
 .tarif-note { margin-top: 2.5rem; font-size: 0.82rem; color: rgba(255,255,255,0.35); line-height: 1.7; }
