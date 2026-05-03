@@ -341,7 +341,9 @@ section { padding: 6rem 5%; }
   box-shadow: 0 8px 24px rgba(0,0,0,0.15);
 }
 .tarif:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
-.tarif.featured { background: var(--peach-pale); border-color: var(--peach); }
+.tarif.pack { background: var(--peach-pale); }
+.tarif.featured { background: var(--peach-light); border: 2px solid var(--peach); }
+.tarif-discount { font-size: 0.85rem; text-decoration: line-through; color: var(--mid); opacity: 0.8; margin-top: 0.5rem; }
 .tarif-label {
   font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--orange); font-weight: 700; margin-bottom: 0.7rem;
