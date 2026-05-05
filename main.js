@@ -39,9 +39,49 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// ══ CONTACT FORM ══
+// ══ CONTACT FORM (AJAX) ══
 const form = document.getElementById('contactForm');
 const btn = document.getElementById('btnSend');
 
-// Le formulaire utilise l'action native vers FormSubmit.co
-// Lors de la soumission, l'utilisateur sera redirigé pour activer son adresse mail (la première fois).
+if (form && btn) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // UI State: Loading
+    const originalBtnText = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = 'Envoi en cours...';
+    
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        // Success
+        btn.innerHTML = 'Message envoyé ! ✓';
+        btn.style.background = '#3a7a3a';
+        form.reset();
+        
+        // Reset button after 5s
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.innerHTML = originalBtnText;
+          btn.style.background = '';
+        }, 5000);
+      } else {
+        throw new Error('Erreur lors de l\'envoi');
+      }
+    } catch (error) {
+      btn.disabled = false;
+      btn.innerHTML = 'Erreur. Réessayer ?';
+      btn.style.background = '#d9534f';
+      console.error(error);
+    }
+  });
+}
