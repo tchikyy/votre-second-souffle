@@ -291,11 +291,20 @@ section { padding: 6rem 5%; }
 #apropos {
   display: grid; grid-template-columns: 0.85fr 1.15fr;
   gap: 5rem; align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
-.apropos-visual { position: relative; }
+.apropos-visual {
+  position: relative;
+  max-width: 380px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: 0;
+}
 .apropos-card {
   background: linear-gradient(150deg, var(--peach-light) 0%, rgba(200,230,200,0.3) 100%);
-  border-radius: 2rem; aspect-ratio: 3/4;
+  border-radius: 2rem; aspect-ratio: 70/86;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   border: 1.5px solid rgba(242,184,154,0.4);
@@ -530,6 +539,7 @@ footer a:hover { color: var(--peach); }
   .services-top { grid-template-columns: 1fr; gap: 1rem; }
   .services-grid { grid-template-columns: 1fr; }
   #apropos { grid-template-columns: 1fr; gap: 3rem; }
+  .apropos-visual { margin: 0 auto; }
   .tarifs-grid { grid-template-columns: 1fr 1fr; }
   .faq-wrap { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
